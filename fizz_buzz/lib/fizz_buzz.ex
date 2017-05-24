@@ -1,21 +1,11 @@
 defmodule FizzBuzz do
-  def fizzer(number) when is_number(number) and rem(number, 3) === 0  and rem(number, 5) === 0 do
-    "FizzBuzz"
-  end
-
-  def fizzer(number) when is_number(number) and rem(number, 3) === 0 do
-    "Fizz"
-  end
-
-  def fizzer(number) when is_number(number) and rem(number, 5) === 0 do
-    "Buzz"
-  end
-
   def fizzer(number) when is_number(number) do
-    number
+    _fizzit(number, rem(number, 3), rem(number, 5))
   end
+  def fizzer(_), do: raise "Not a number"
 
-  def fizzer(_) do
-    raise "Not a number"
-  end
+  defp _fizzit(_number, 0, 0), do: "FizzBuzz"
+  defp _fizzit(_number, 0, _), do: "Fizz"
+  defp _fizzit(_number, _, 0), do: "Buzz"
+  defp _fizzit(number, _, _), do: number
 end
